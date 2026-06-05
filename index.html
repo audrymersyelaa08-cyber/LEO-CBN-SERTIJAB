@@ -1,46 +1,249 @@
-# LEO-CBN-SERTIJAB
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Leo CBN Event</title>
-    <style>
-        body{
-            font-family: Arial;
-            text-align:center;
-            margin-top:100px;
-            background:#f5f5f5;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .card{
-            background:white;
-            padding:40px;
-            max-width:500px;
-            margin:auto;
-            border-radius:15px;
-            box-shadow:0 0 15px rgba(0,0,0,0.1);
-        }
-    </style>
+<title>Serah Terima Jabatan Leo Cosmo Bungo Nusantara</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0F172A;
+    color:white;
+    text-align:center;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    background:linear-gradient(
+        rgba(15,23,42,0.85),
+        rgba(15,23,42,0.85)
+    ),
+    url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200');
+    background-size:cover;
+    background-position:center;
+}
+
+.logo{
+    font-size:18px;
+    color:#FFD700;
+    letter-spacing:2px;
+}
+
+h1{
+    font-size:3rem;
+    margin-top:10px;
+}
+
+.guest{
+    margin-top:25px;
+    font-size:1.3rem;
+}
+
+.guest-name{
+    color:#FFD700;
+    font-weight:700;
+    font-size:1.8rem;
+}
+
+.date{
+    margin-top:20px;
+    font-size:1.1rem;
+}
+
+.countdown{
+    display:flex;
+    gap:15px;
+    margin-top:35px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.box{
+    background:white;
+    color:#0F172A;
+    width:90px;
+    padding:15px;
+    border-radius:15px;
+}
+
+.box span{
+    font-size:28px;
+    font-weight:700;
+}
+
+.section{
+    padding:70px 20px;
+}
+
+.section h2{
+    color:#FFD700;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    color:#0F172A;
+    max-width:600px;
+    margin:auto;
+    padding:25px;
+    border-radius:20px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:25px;
+    background:#FFD700;
+    color:#0F172A;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:700;
+}
+
+.footer{
+    padding:30px;
+    font-size:14px;
+    color:#ccc;
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:2rem;
+    }
+}
+</style>
 </head>
-
 <body>
 
+<section class="hero">
+
+<div class="logo">
+LEO COSMO BUNGO NUSANTARA
+</div>
+
+<h1>Serah Terima Jabatan</h1>
+
+<div class="guest">
+Kepada Yth.
+<br>
+<div class="guest-name" id="guestName">
+Tamu Undangan
+</div>
+</div>
+
+<div class="date">
+📅 11 Juli 2026
+<br>
+🕖 Pukul 19.00 WIB
+</div>
+
+<div class="countdown">
+<div class="box">
+<span id="days">0</span>
+<br>Hari
+</div>
+
+<div class="box">
+<span id="hours">0</span>
+<br>Jam
+</div>
+
+<div class="box">
+<span id="minutes">0</span>
+<br>Menit
+</div>
+
+<div class="box">
+<span id="seconds">0</span>
+<br>Detik
+</div>
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>About Event</h2>
+
 <div class="card">
-    <h3>Kepada Yth.</h3>
+<p>
+Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara Serah Terima Jabatan Leo Cosmo Bungo Nusantara Periode 2026–2027.
+</p>
 
-    <h1 id="guest">Tamu Undangan</h1>
+<br>
 
-    <p>Leo Cosmo Bungo Nusantara Fellowship BBQ</p>
+<p>
+Mari bersama merayakan perjalanan kepemimpinan yang telah dilalui dan menyambut semangat baru untuk masa bakti berikutnya.
+</p>
+
+<a class="button" href="https://forms.google.com">
+Konfirmasi Kehadiran
+</a>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Venue</h2>
+
+<div class="card">
+📍 Isi alamat acara di sini
+</div>
+
+</section>
+
+<div class="footer">
+© 2026 Leo Cosmo Bungo Nusantara
 </div>
 
 <script>
+
+// Nama tamu otomatis
 const params = new URLSearchParams(window.location.search);
+const guest = params.get("to");
 
-const nama = params.get("to");
-
-if(nama){
-    document.getElementById("guest").innerText =
-    decodeURIComponent(nama);
+if(guest){
+document.getElementById("guestName").innerText =
+decodeURIComponent(guest);
 }
+
+// Countdown
+const eventDate = new Date("July 11, 2026 19:00:00").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+const distance = eventDate - now;
+
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
 </script>
 
 </body>
