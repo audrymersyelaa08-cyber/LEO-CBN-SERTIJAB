@@ -241,9 +241,9 @@ document.getElementById("guestName").innerText =
 decodeURIComponent(guest);
 }
 
-const target = new Date("2026-07-11T19:00:00+07:00");
+const eventDate = new Date("July 11, 2026 19:00:00").getTime();;
 
-function updateCountdown() {
+function updateCountdown() 
     const now = new Date();
     const diff = target - now;
 
