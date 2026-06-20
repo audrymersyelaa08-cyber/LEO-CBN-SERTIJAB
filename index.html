@@ -241,15 +241,16 @@ document.getElementById("guestName").innerText =
 decodeURIComponent(guest);
 }
 
-const eventDate = new Date("July 11, 2026 21:00:00").getTime();;
+const target = new Date("2026-07-11T15:00:00+07:00");
 
-function updateCountdown() 
+function updateCountdown() {
     const now = new Date();
     const diff = target - now;
 
     if (diff <= 0) {
         document.querySelector(".countdown").innerHTML = "Acara telah dimulai";
         return;
+    }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
