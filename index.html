@@ -228,50 +228,52 @@ Konfirmasi Kehadiran
 <div class="footer">
 © 2026 Leo Cosmo Bungo Nusantara
 </div>
-
 <script>
-// Nama tamu
+// ======================
+// Nama tamu otomatis
+// ======================
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("to");
 
 if (guest) {
-    document.getElementById("guestName").textContent = decodeURIComponent(guest);
+    document.getElementById("guestName").textContent =
+        decodeURIComponent(guest);
 }
 
+// ======================
 // Countdown
+// ======================
+
 const target = new Date("2026-07-11T15:00:00+07:00");
 
-function updateCountdown() {
+function updateCountdown(){
+
     const now = new Date();
     const diff = target - now;
 
-    if (diff <= 0) {
-        document.querySelector(".countdown").innerHTML = "Acara telah dimulai";
+    if(diff <= 0){
+
+        document.querySelector(".countdown").innerHTML =
+        "<h2>Acara telah dimulai 🎉</h2>";
+
         return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const minutes = Math.floor((diff/(1000*60))%60);
+    const seconds = Math.floor((diff/1000)%60);
 
     document.getElementById("days").textContent = days;
     document.getElementById("hours").textContent = hours;
     document.getElementById("minutes").textContent = minutes;
     document.getElementById("seconds").textContent = seconds;
+
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
+
 </script>
-    
-<img src="cover.jpg" alt="Leo CBN"
-style="
-width:100%;
-max-width:700px;
-border-radius:20px;
-margin-top:20px;
-">
-6+
 </body>
 </html>
