@@ -143,8 +143,7 @@ LEO COSMO BUNGO NUSANTARA
 <div class="guest">
 Kepada Yth.
 <br>
-<div class="guest-name" id="guestName">
-Tamu Undangan
+<h2 id="guestName">Tamu Undangan</h2>
 </div>
 </div>
 
@@ -273,5 +272,14 @@ margin-top:20px;
 
 </script>
 
+<script>
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("to");
+
+if (guest) {
+    document.getElementById("guestName").textContent = guest;
+}
+</script>
+    
 </body>
 </html>
