@@ -145,7 +145,6 @@ Kepada Yth.
 <br>
 <h2 id="guestName">Tamu Undangan</h2>
 </div>
-</div>
 
 <div class="date">
 📅 11 Juli 2026
@@ -231,16 +230,15 @@ Konfirmasi Kehadiran
 </div>
 
 <script>
-
-// Nama tamu otomatis
+// Nama tamu
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("to");
 
-if(guest){
-document.getElementById("guestName").innerText =
-decodeURIComponent(guest);
+if (guest) {
+    document.getElementById("guestName").textContent = decodeURIComponent(guest);
 }
 
+// Countdown
 const target = new Date("2026-07-11T15:00:00+07:00");
 
 function updateCountdown() {
@@ -265,8 +263,8 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-
+</script>
+    
 <img src="cover.jpg" alt="Leo CBN"
 style="
 width:100%;
@@ -274,13 +272,7 @@ max-width:700px;
 border-radius:20px;
 margin-top:20px;
 ">
-    
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("to");
 
-if (guest) {
-    document.getElementById("guestName").textContent = guest;
-}
 </script>
     
 </body>
